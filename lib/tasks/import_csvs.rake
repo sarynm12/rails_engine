@@ -2,7 +2,7 @@ require 'csv'
 
 desc "Import data from csv files"
 task :import => [:environment] do
-  puts 'Clearing database'
+  puts 'Clearing database...'
   Transaction.destroy_all
   InvoiceItem.destroy_all
   Invoice.destroy_all
