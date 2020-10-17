@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :item do
-    name { "MyString" }
-    description { "MyString" }
-    unit_price { 1.5 }
-    merchant { nil }
+    name { Faker::Music.instrument }
+    description { Faker::Music.band ("Original") }
+    unit_price { Faker::Commerce.price }
+    merchant 
   end
 end
