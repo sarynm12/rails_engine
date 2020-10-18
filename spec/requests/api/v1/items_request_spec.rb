@@ -46,4 +46,18 @@ RSpec.describe "Items API" do
     expect(item).to have_key(:unit_price)
     expect(item[:unit_price]).to be_a(Float)
   end
+
+  it 'can create a new item' do
+    merchant_id = create(:merchant).id
+
+    item_params = { name: 'Harry Potter doll', description: 'Your very own Harry Potter', unit_price: 12.00, merchant_id: merchant_id }
+
+    post "/api/v1/items", params: item_params
+    expect(response).to be_successful
+
+    json = JSON.parse(response.body, symbolize_names: true)
+    item = Item.last
+
+    expect(item.name).to eq(item_params[:name])
+  end
 end
