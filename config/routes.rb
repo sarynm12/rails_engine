@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   #get "/api/v1/items", to: 'search#show'
   namespace :api do
     namespace :v1 do
-
+      post '/items', to: 'items#create'
       # namespace :merchants do
       #   get '/find', to: 'search#show'
       # end
