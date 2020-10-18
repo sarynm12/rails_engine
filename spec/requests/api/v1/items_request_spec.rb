@@ -59,5 +59,8 @@ RSpec.describe "Items API" do
     item = Item.last
 
     expect(item.name).to eq(item_params[:name])
+    expect(item.description).to eq(item_params[:description])
+    expect(item.unit_price).to eq(item_params[:unit_price])
+    expect(item.merchant_id).to eq(item_params[:merchant_id])
   end
 end
