@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post '/items', to: 'items#create'
+      patch '/items/:id', to: 'items#update'
+      delete '/items/:id', to: 'items#destroy'
       # namespace :merchants do
       #   get '/find', to: 'search#show'
       # end
