@@ -6,9 +6,11 @@ Rails.application.routes.draw do
       post '/items', to: 'items#create'
       patch '/items/:id', to: 'items#update'
       delete '/items/:id', to: 'items#destroy'
-      # namespace :merchants do
-      #   get '/find', to: 'search#show'
-      # end
+
+      namespace :merchants do
+        get '/', to: 'search#index'
+        get '/:id', to: 'search#show'
+      end
 
       namespace :items do
         get '/', to: 'search#index'
