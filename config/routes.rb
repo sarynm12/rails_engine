@@ -6,6 +6,9 @@ Rails.application.routes.draw do
       post '/items', to: 'items#create'
       patch '/items/:id', to: 'items#update'
       delete '/items/:id', to: 'items#destroy'
+      post '/merchants', to: 'merchants#create'
+      patch '/merchants/:id', to: 'merchants#update'
+      delete '/merchants/:id', to: 'merchants#destroy'
 
       namespace :merchants do
         get '/', to: 'search#index'
