@@ -56,19 +56,19 @@ RSpec.describe "Items API" do
     expect(response).to be_successful
 
     json = JSON.parse(response.body, symbolize_names: true)
-    item = Item.last
+    item = json[:data]
 
-    expect(item.name).to eq(item_params[:name])
-    expect(item.description).to eq(item_params[:description])
-    expect(item.unit_price).to eq(item_params[:unit_price])
-    expect(item.merchant_id).to eq(item_params[:merchant_id])
+    expect(item[:attributes][:name]).to eq(item_params[:name])
+    expect(item[:attributes][:description]).to eq(item_params[:description])
+    expect(item[:attributes][:unit_price]).to eq(item_params[:unit_price])
+    expect(item[:attributes][:merchant_id]).to eq(item_params[:merchant_id])
   end
 
   it 'can update an existing item' do
     merchant = create(:merchant)
     id = create(:item, merchant: merchant).id
     previous = Item.last.name
-    item_params = { name: 'Hermione Granger Doll' }
+    item_params = { name: 'Hermione Grainger Doll' }
 
     patch "/api/v1/items/#{id}", params: item_params
     item = Item.find(id)
@@ -76,7 +76,7 @@ RSpec.describe "Items API" do
 
     expect(response).to be_successful
     expect(item.name).to_not eq(previous)
-    expect(item.name).to eq('Hermione Granger Doll')
+    expect(item.name).to eq('Hermione Grainger Doll')
   end
 
   it 'can delete an item' do
