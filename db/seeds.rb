@@ -7,8 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-# desc "Import csv data"
-# task import_data: :environment do
   Customer.destroy_all
   Merchant.destroy_all
   Invoice.destroy_all
