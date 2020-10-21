@@ -82,6 +82,7 @@ RSpec.describe "Items API" do
   it 'can delete an item' do
     create(:merchant)
     merchant = Merchant.first
+  
     item = create(:item, merchant: merchant)
 
     expect(Item.count).to eq(1)
