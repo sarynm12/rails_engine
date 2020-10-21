@@ -9,7 +9,7 @@ RSpec.describe "Item/Merchant relationship" do
     expect(response).to be_successful
 
     parsed = JSON.parse(response.body, symbolize_names: true)
-  
+    
     expect(parsed.count).to eq(1)
     expect(parsed[:data]).to have_key(:id)
     expect(parsed[:data][:id]).to be_a(String)

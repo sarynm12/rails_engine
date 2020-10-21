@@ -25,4 +25,31 @@ RSpec.describe "Item/Merchant relationship" do
       expect(item[:attributes][:merchant_id]).to be_an(Integer)
     end
   end
+
+  it 'can return the correct items' do
+    merchant1 = create(:merchant)
+    merchant2 = create(:merchant)
+    items = create_list(:item, 2, merchant: merchant1)
+    item3 = create(:item, merchant: merchant2)
+
+    get "/api/v1/merchants/#{merchant1.id}/items"
+
+    expect(response).to be_successful
+
+    items = JSON.parse(response.body, symbolize_names: true)
+
+    expect(items[:data].count).to eq(2)
+    items[:data].each do |item|
+      expect(item[:attributes][:merchant_id]).to_not eq(merchant2.id)
+      expect(item[:attributes][:merchant_id]).to eq(merchant1.id)
+    end
+
+    get "/api/v1/merchants/#{merchant2.id}/items"
+
+    expect(response).to be_successful
+
+    item = JSON.parse(response.body, symbolize_names: true)
+  
+    expect(item[:data].count).to eq(1)
+  end
 end

@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   #get "/api/v1/items", to: 'search#show'
   namespace :api do
     namespace :v1 do
+      get '/merchants/find', to: 'merchants/find#show'
+      get '/merchants/find_all', to: 'merchants/find#index'
+
+      get '/items/find', to: 'items/find#show'
+      get '/items/find_all', to: 'items/find#index'
 
       # post '/items', to: 'items#create'
       # patch '/items/:id', to: 'items#update'
@@ -18,6 +23,7 @@ Rails.application.routes.draw do
 
       resources :merchants, only: [:index, :show, :create, :update, :destroy] do
         get '/items', to: 'merchants/items#index'
+        #get '/find', to: 'merchants/find#show'
       end
     end
   end

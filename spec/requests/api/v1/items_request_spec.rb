@@ -82,8 +82,9 @@ RSpec.describe "Items API" do
   it 'can delete an item' do
     create(:merchant)
     merchant = Merchant.first
-    item = create(:item, merchant: merchant)
 
+    item = create(:item, merchant: merchant)
+  
     expect(Item.count).to eq(1)
 
     delete "/api/v1/items/#{item.id}"
