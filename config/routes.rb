@@ -6,6 +6,9 @@ Rails.application.routes.draw do
       get '/merchants/find', to: 'merchants/find#show'
       get '/merchants/find_all', to: 'merchants/find#index'
 
+      get '/items/find', to: 'items/find#show'
+      get '/items/find_all', to: 'items/find#index'
+
       # post '/items', to: 'items#create'
       # patch '/items/:id', to: 'items#update'
       # delete '/items/:id', to: 'items#destroy'
