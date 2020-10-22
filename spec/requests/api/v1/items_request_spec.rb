@@ -50,7 +50,7 @@ RSpec.describe "Items API" do
   it 'can create a new item' do
     merchant_id = create(:merchant).id
 
-    item_params = { name: 'Harry Potter doll', description: 'Your very own Harry Potter', unit_price: 12.00, merchant_id: merchant_id }
+    item_params = { id: '1', name: 'Harry Potter doll', description: 'Your very own Harry Potter', unit_price: 12.00, merchant_id: merchant_id }
 
     post "/api/v1/items", params: item_params
     expect(response).to be_successful
@@ -84,7 +84,7 @@ RSpec.describe "Items API" do
     merchant = Merchant.first
 
     item = create(:item, merchant: merchant)
-  
+
     expect(Item.count).to eq(1)
 
     delete "/api/v1/items/#{item.id}"
