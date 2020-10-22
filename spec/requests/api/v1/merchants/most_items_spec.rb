@@ -28,7 +28,7 @@ RSpec.describe 'Merchant items' do
     expect(response).to be_successful
 
     merchants = JSON.parse(response.body, symbolize_names: true)
-
+  
     expect(merchants[:data].count).to eq(2)
     expect(merchants[:data][0][:attributes][:name]).to eq(merchant1.name)
     expect(merchants[:data][1][:attributes][:name]).to eq(merchant2.name)
