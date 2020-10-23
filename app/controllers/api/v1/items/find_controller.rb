@@ -6,9 +6,9 @@ class Api::V1::Items::FindController < ApplicationController
       if item_params.keys.first == "name"
         item = Item.where("name ILIKE ?", "%#{item_params[:name]}%").first
       elsif attribute == "description"
-          item = Item.where("description ILIKE ?", "%#{item_params[:description]}%").first
+        item = Item.where("description ILIKE ?", "%#{item_params[:description]}%").first
       elsif attribute == "unit_price"
-          item = Item.where(unit_price: "#{value}.to_f").first
+        item = Item.where(unit_price: "#{value}.to_f").first
       else attribute == "created_at" || "updated_at"
         item = Item.where("item.#{attribute}.to_date" == "#{value.to_date}").first
       end

@@ -9,7 +9,12 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    render json: ItemSerializer.new(Item.create(item_params))
+    if params[:id].nil?
+      id = Item.last[:id].to_i + 1
+      render json: ItemSerializer.new(Item.create({id: id.to_s, name: item_params[:name], description: item_params[:description], unit_price: item_params[:unit_price], merchant_id: params[:merchant_id]}))
+    else
+      render json: ItemSerializer.new(Item.create(item_params))
+    end
   end
 
   def update
@@ -18,6 +23,7 @@ class Api::V1::ItemsController < ApplicationController
 
   def destroy
     Item.destroy(params[:id])
+    render status: 204
   end
 
   private

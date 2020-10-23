@@ -7,17 +7,10 @@ Rails.application.routes.draw do
       get '/merchants/find_all', to: 'merchants/find#index'
       get '/merchants/most_revenue', to: 'merchants/revenue#index'
       get '/merchants/most_items', to: 'merchants/most_items#index'
+      get '/merchants/:id/revenue', to: 'merchants/revenue#show'
 
       get '/items/find', to: 'items/find#show'
       get '/items/find_all', to: 'items/find#index'
-
-      # post '/items', to: 'items#create'
-      # patch '/items/:id', to: 'items#update'
-      # delete '/items/:id', to: 'items#destroy'
-      # get '/merchant', to: 'items/merchant#index'
-      # post '/merchants', to: 'merchants#create'
-      # patch '/merchants/:id', to: 'merchants#update'
-      # delete '/merchants/:id', to: 'merchants#destroy'
 
       resources :items, only: [:index, :show, :create, :update, :destroy] do
         get '/merchant', to: 'items/merchant#index'
@@ -25,7 +18,6 @@ Rails.application.routes.draw do
 
       resources :merchants, only: [:index, :show, :create, :update, :destroy] do
         get '/items', to: 'merchants/items#index'
-        #get '/find', to: 'merchants/find#show'
       end
     end
   end

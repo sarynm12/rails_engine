@@ -9,7 +9,12 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def create
-    render json: MerchantSerializer.new(Merchant.create(merchant_params))
+    if params[:id].nil?
+      id = Merchant.last[:id].to_i + 1
+      render json: MerchantSerializer.new(Merchant.create({id: id.to_s, name: merchant_params[:name]}))
+    else
+      render json: MerchantSerializer.new(Merchant.create(merchant_params))
+    end 
   end
 
   def update
@@ -18,6 +23,7 @@ class Api::V1::MerchantsController < ApplicationController
 
   def destroy
     Merchant.destroy(params[:id])
+    render status: 204
   end
 
   private

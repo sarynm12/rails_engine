@@ -16,8 +16,6 @@ RSpec.describe 'Merchant finders' do
     expect(merchant[:data][:attributes][:name]).to_not eq(merchant2.name)
     expect(merchant[:data][:attributes][:name]).to_not eq(merchant3.name)
     expect(merchant[:data][:attributes][:name]).to_not eq(merchant4.name)
-
-    #add in test and update method for partial matches
   end
 
   it 'can return a single merchant that matches the created_at parameter passed into a query' do

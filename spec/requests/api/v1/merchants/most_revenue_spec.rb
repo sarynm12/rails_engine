@@ -67,7 +67,6 @@ RSpec.describe 'Merchant revenue' do
     expect(merchants[:data][0][:attributes][:name]).to eq(merchant2.name)
     expect(merchants[:data][1][:attributes][:name]).to eq(merchant4.name)
     expect(merchants[:data][2][:attributes][:name]).to eq(merchant3.name)
-
   end
 
 end
