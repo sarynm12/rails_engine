@@ -23,6 +23,7 @@ class Api::V1::ItemsController < ApplicationController
 
   def destroy
     Item.destroy(params[:id])
+    render status: 204
   end
 
   private

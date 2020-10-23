@@ -4,7 +4,7 @@ RSpec.describe 'Item finders' do
   before(:each) do
     @merchant = create(:merchant)
     @item1 = create(:item, name: "Owl Stuffy", description: "Harry Potter Owl Stuffed Animal", unit_price: 8.00, merchant: @merchant)
-    @item2 = create(:item, name: "Beanie Baby", description: "Vintage Beanie Baby Doll", unit_price: 200.00, merchant: @merchant, created_at: "02/02/2020")
+    @item2 = create(:item, name: "Beanie Baby", description: "Vintage Beanie Baby Doll", unit_price: 200.00, merchant: @merchant, created_at: '02-02-2020')
   end
 
   it 'can return a single item that matches the name parameters passed into a query' do
@@ -47,8 +47,7 @@ RSpec.describe 'Item finders' do
     expect(response).to be_successful
     item = JSON.parse(response.body, symbolize_names: true)
 
-    #expect(item[:data][:attributes][:created_at]).to eq(@item2.created_at)
-    #expect(item[:data][:attributes][:created_at]).to_not eq(@item1.created_at)
+    #expect(item[:data][:attributes][:name]).to eq(@item2.name)
   end
 
   it 'can return multiple items that match the name parameter passed into a query' do
