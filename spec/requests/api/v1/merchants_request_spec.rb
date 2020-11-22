@@ -54,7 +54,7 @@ RSpec.describe "Merchants API" do
     id = create(:merchant).id
 
     previous = Merchant.last.name
-    merchant_params = { name: 'Severus Snape' }
+    merchant_params = { name: 'Saryn Mooney' }
 
     patch "/api/v1/merchants/#{id}", params: merchant_params
     merchant = Merchant.find(id)
@@ -62,7 +62,7 @@ RSpec.describe "Merchants API" do
 
     expect(response).to be_successful
     expect(merchant.name).to_not eq(previous)
-    expect(merchant.name).to eq('Severus Snape')
+    expect(merchant.name).to eq('Saryn Mooney')
   end
 
   it 'can delete a merchant' do

@@ -53,7 +53,7 @@ RSpec.describe 'Item finders' do
   it 'can return multiple items that match the name parameter passed into a query' do
     item3 = create(:item, name: "Stuff", merchant: @merchant)
 
-    get "/api/v1/items/find_all?name=stuff"
+    get "/api/v1/items/find_all?name=StUff"
 
     expect(response).to be_successful
     items = JSON.parse(response.body, symbolize_names: true)
@@ -62,7 +62,7 @@ RSpec.describe 'Item finders' do
   end
 
   it 'can return multiple items that match the description parameter passed into a query' do
-    item3 = create(:item, name: "Stuff", merchant: @merchant, description: "cat")
+    item3 = create(:item, name: "Stuff", merchant: @merchant, description: "CAT")
 
     get "/api/v1/items/find_all?description=a"
 
